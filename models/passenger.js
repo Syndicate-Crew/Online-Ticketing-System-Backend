@@ -14,14 +14,6 @@ const passenger = mongo.Schema({
         type: String,
         require: true
     },
-    nic: {
-        type: String,
-        require: true
-    },
-    creditBalance: {
-        type: Number,
-        require: true
-    },
     image: {
         type: String
     }
