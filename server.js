@@ -11,6 +11,7 @@ const config = require("config");
  *****************************************************************************************************************************/
 
 const passengerRoute = require("./routes/passenger.route");
+const journeyRoute = require("./routes/journey.routes");
 
 /*****************************************************************************************************************************
  * Database Connection
@@ -34,6 +35,7 @@ connection.once("open", () => {
  *****************************************************************************************************************************/
 router.use("/passenger", passengerRoute)
 router.use("/public/profile_pictures", express.static('./public/profile-pictures'));
+router.use("/journey", journeyRoute);
 
 app.use(config.get("root"), router);
 /*****************************************************************************************************************************
