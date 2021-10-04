@@ -67,4 +67,27 @@ const updateInfo = async (req, res) => {
     })
 }
 
-module.exports = { create, updateInfo };
+const addCredit = async (req,res) => {
+    await passenger.findOne({_id: req.passenger.id})
+    .then(result => {
+        return local.findOneAndUpdate({passengerId: result._id}, {
+            $inc: {
+                creditBalance: req.body.creditBalance
+            }
+        })
+    })
+    .then(result => {
+        res.json({
+            status: "successful",
+            result: result
+        })
+    })
+    .catch(err => {
+        res.json({
+            status: "error",
+            error: err,
+        });
+    })
+}
+
+module.exports = { create, updateInfo, addCredit };

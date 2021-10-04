@@ -17,8 +17,9 @@ router.route("/local").post(upload.single("image"),local.create);
 
 router.route("/local").put(auth, local.updateInfo);
 
+router.route("/local/AddCredit").put(auth, local.addCredit)
+
 // foreign passenger
-router.route("/foreign").get(foreign.getAll);
 
 router.route("/foreign").post(upload.single("image"),foreign.create);
 
