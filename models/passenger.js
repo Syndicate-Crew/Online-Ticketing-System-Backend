@@ -10,6 +10,10 @@ const passenger = mongo.Schema({
         type: String,
         require: true
     },
+    password: {
+        type: String,
+        require: true
+    },
     nic: {
         type: String,
         require: true
@@ -17,6 +21,9 @@ const passenger = mongo.Schema({
     creditBalance: {
         type: Number,
         require: true
+    },
+    image: {
+        type: String
     }
 });
 
