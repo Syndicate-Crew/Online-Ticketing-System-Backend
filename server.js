@@ -33,6 +33,7 @@ connection.once("open", () => {
  * Routes
  *****************************************************************************************************************************/
 router.use("/passenger", passengerRoute)
+router.use("/public/profile_pictures", express.static('./public/profile-pictures'));
 
 app.use(config.get("root"), router);
 /*****************************************************************************************************************************
