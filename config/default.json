@@ -1,0 +1,5 @@
+{
+    "db": "mongodb+srv://dbuser:dbuser@onlineticketingsystem.eluw7.mongodb.net/onlineTicketingSystem?retryWrites=true&w=majority",
+    "root": "/api",
+    "port": 5000
+}
