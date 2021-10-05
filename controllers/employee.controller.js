@@ -1,4 +1,3 @@
-const driver = require("../models/driver");
 const employee = require("../models/Employee");
 
 const create = async (req,res) => {
@@ -8,27 +7,21 @@ const create = async (req,res) => {
         nic: req.body.email
     })
     .then(result => {
-        return driver.create({
-            employeeId: result._id,
-            driverLicenceId: req.body.driverLicenceId
-        })
-    })
-    .then(result => {
         res.json({
-            status: "successful"
+            status: "successful",
+            result: result
         })
     })
     .catch(err => {
         res.json({
-            status: "error",
-            error: err
-         })
+           status: "error",
+           error: err
+        })
     })
-    
 }
 
 const getAll = async (req,res) => {
-    await driver.find()
+    await employee.find()
     .then(result => {
         res.json({
             status: "successful",
@@ -44,7 +37,23 @@ const getAll = async (req,res) => {
 }
 
 const getById = async (req,res) => {
-    driver.findOne({_id: req.params.id })
+    employee.findOne({_id: req.params.id })
+    .then(result => {
+        res.json({
+            status: "successful",
+            result: result
+        })
+    })
+    .catch(err => {
+        res.json({
+           status: "error",
+           error: err
+        })
+    })
+}
+
+const getByName = async (req,res) => {
+    employee.findOne({name: req.body.name })
     .then(result => {
         res.json({
             status: "successful",
@@ -66,13 +75,9 @@ const update = async (req,res) => {
         nic: req.body.email
     })
     .then(result => {
-        return driver.findOneAndUpdate({employeeId: req.params.id}, {
-            driverLicenceId: req.body.driverLicenceId
-        })
-    })
-    .then(result => {
         res.json({
             status: "successful",
+            result: result
         })
     })
     .catch(err => {
@@ -83,4 +88,4 @@ const update = async (req,res) => {
     })
 }
 
-module.exports = { create, getAll, getById, update };
+module.exports = { create, getAll, getById, getByName, update };

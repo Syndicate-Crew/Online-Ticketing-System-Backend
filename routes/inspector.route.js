@@ -1,4 +1,4 @@
-const controller = require("../controllers/driver.controller");
+const controller = require("../controllers/inspector.controller");
 const router = require("express").Router();
 
 router.route("/").get(controller.getAll);

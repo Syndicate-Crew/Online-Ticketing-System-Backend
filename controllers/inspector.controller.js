@@ -1,4 +1,4 @@
-const driver = require("../models/driver");
+const inspector = require("../models/Inspector");
 const employee = require("../models/Employee");
 
 const create = async (req,res) => {
@@ -8,9 +8,9 @@ const create = async (req,res) => {
         nic: req.body.email
     })
     .then(result => {
-        return driver.create({
+        return inspector.create({
             employeeId: result._id,
-            driverLicenceId: req.body.driverLicenceId
+            inspectorId: req.body.inspectorId
         })
     })
     .then(result => {
@@ -66,8 +66,8 @@ const update = async (req,res) => {
         nic: req.body.email
     })
     .then(result => {
-        return driver.findOneAndUpdate({employeeId: req.params.id}, {
-            driverLicenceId: req.body.driverLicenceId
+        return inspector.findOneAndUpdate({employeeId: req.params.id}, {
+            inspectorId: req.body.inspectorId
         })
     })
     .then(result => {

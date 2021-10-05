@@ -1,6 +1,6 @@
 const mongo = require("mongoose");
 
-const driver = new mongo.Schema({
+const inspector = new mongo.Schema({
     employeeId: {
         type: String,
         require: true
@@ -11,4 +11,4 @@ const driver = new mongo.Schema({
     }
 });
 
-module.exports = mongo.model("driver", driver);
+module.exports = mongo.model("inspector", inspector);

@@ -14,6 +14,7 @@ const passengerRoute = require("./routes/passenger.route");
 const journeyRoute = require("./routes/journey.routes");
 const busRoute = require("./routes/bus.route");
 const driverRoute = require("./routes/driver.router");
+const inspectorRoute = require("./routes/inspector.route");
 
 /*****************************************************************************************************************************
  * Database Connection
@@ -39,7 +40,8 @@ router.use("/passenger", passengerRoute)
 router.use("/public/profile_pictures", express.static('./public/profile-pictures'));
 router.use("/journey", journeyRoute);
 router.use("/bus", busRoute);
-router.use("/driver", driverRoute)
+router.use("/driver", driverRoute);
+router.use("/employee", inspectorRoute);
 
 app.use(config.get("root"), router);
 /*****************************************************************************************************************************
