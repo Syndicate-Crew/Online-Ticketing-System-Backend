@@ -1,4 +1,3 @@
-const { Double } = require("bson");
 const mongo = require("mongoose");
 
 const passenger = mongo.Schema({

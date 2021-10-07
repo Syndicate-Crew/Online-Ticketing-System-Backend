@@ -11,8 +11,7 @@ const create = async (req,res) => {
     await passenger.create({
         name: req.body.name,
         email: req.body.email,
-        password: password,
-        image: req.file.filename
+        password: password
 
     }).then(result => {
         return local.create({
