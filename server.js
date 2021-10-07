@@ -47,7 +47,7 @@ app.use(config.get("root"), router);
 /*****************************************************************************************************************************
  * Execution 
  *****************************************************************************************************************************/
-const port = config.get("port");
+const port = config.get("port") || process.env.PORT;
 app.listen(port, () => {
     console.log(`Server started on port ${port}`);
 });
