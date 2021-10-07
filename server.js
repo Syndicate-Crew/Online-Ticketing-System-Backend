@@ -50,8 +50,7 @@ app.get("/", (req, res) => res.send("Sri Lankan Airline Backend Api Running"));
 /*****************************************************************************************************************************
  * Execution 
  *****************************************************************************************************************************/
-const port = 5000 || process.env.PORT;
-console.log(port)
-app.listen(port, () => {
-    console.log(`Server started on port ${port}`);
+
+app.listen(process.env.PORT, '0.0.0.0', () => {
+    console.log(`Server started on port ${process.env.PORT}`);
 });
