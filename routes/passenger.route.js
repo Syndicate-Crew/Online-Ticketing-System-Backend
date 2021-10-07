@@ -9,11 +9,11 @@ router.route("/").get(controller.getAll);
 
 router.route("/:id").get(controller.getById);
 
-router.route("/").post(controller.create);
+router.route("/").post(upload.single("image"),controller.create);
 
 // local passenger
 
-router.route("/local").post(local.create);
+router.route("/local").post(upload.single("image"),local.create);
 
 router.route("/local").put(auth, local.updateInfo);
 
@@ -21,7 +21,7 @@ router.route("/local/AddCredit").put(auth, local.addCredit)
 
 // foreign passenger
 
-router.route("/foreign").post(foreign.create);
+router.route("/foreign").post(upload.single("image"),foreign.create);
 
 router.route("/foreign").put(auth, foreign.updateInfo);
 

@@ -11,7 +11,8 @@ const create = async (req,res) => {
     await passenger.create({
         name: req.body.name,
         email: req.body.email,
-        password: password
+        password: password,
+        image: req.file.filename
 
     }).then(result => {
         return foreign.create({
