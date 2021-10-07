@@ -44,6 +44,9 @@ router.use("/driver", driverRoute);
 router.use("/employee", inspectorRoute);
 
 app.use(config.get("root"), router);
+
+app.get("/", (req, res) => res.send("Sri Lankan Airline Backend Api Running"));
+
 /*****************************************************************************************************************************
  * Execution 
  *****************************************************************************************************************************/
