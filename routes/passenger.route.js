@@ -15,7 +15,7 @@ router.route("/").post(upload.single("image"),controller.create);
 
 router.route("/local").post(upload.single("image"),local.create);
 
-router.route("/local/:id").post(local.getById);
+router.route("/local/:id").get(local.getById);
 
 router.route("/local").put(auth, local.updateInfo);
 
