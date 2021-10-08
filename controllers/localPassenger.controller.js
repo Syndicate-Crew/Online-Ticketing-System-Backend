@@ -42,6 +42,21 @@ const create = async (req,res) => {
     })
 }
 
+const getById = async (req,res) => {
+    await local.find({passengerId: req.params.id})
+    .then(result => {
+        res.json({
+            status: "successful",
+            result: result
+        })
+    }).catch(err => {
+        res,json({
+            status: "error",
+            error: err,
+        });
+    })
+}
+
 const updateInfo = async (req, res) => {
     const { name, email, nic, creditBalance } = req.body;
     await passenger.findOneAndUpdate({_id: req.passenger.id},{
@@ -90,4 +105,4 @@ const addCredit = async (req,res) => {
     })
 }
 
-module.exports = { create, updateInfo, addCredit };
+module.exports = { create, updateInfo, addCredit, getById };
