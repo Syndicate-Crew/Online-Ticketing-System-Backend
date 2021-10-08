@@ -41,7 +41,7 @@ router.use("/public/profile_pictures", express.static('./public/profile-pictures
 router.use("/journey", journeyRoute);
 router.use("/bus", busRoute);
 router.use("/driver", driverRoute);
-router.use("/employee", inspectorRoute);
+router.use("/inspector", inspectorRoute);
 
 app.use(config.get("root"), router);
 
@@ -49,6 +49,10 @@ app.use(config.get("root"), router);
  * Execution 
  *****************************************************************************************************************************/
 
-app.listen(process.env.PORT, '0.0.0.0', () => {
+app.listen(process.env.PORT || 5000, '0.0.0.0', () => {
     console.log(`Server started on port ${process.env.PORT}`);
 });
+
+// app.listen(5000, () => {
+//     console.log(`Server started on port 5000`);
+// });

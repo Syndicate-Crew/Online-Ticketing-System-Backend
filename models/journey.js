@@ -1,10 +1,6 @@
 const mongo = require("mongoose");
 
 const journey = mongo.Schema({
-    passengerId: {
-        type: String,
-        require: true
-    },
     busId: {
         type: String,
         require: true

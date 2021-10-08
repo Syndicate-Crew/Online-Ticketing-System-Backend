@@ -42,6 +42,42 @@ const create = async (req,res) => {
     })
 }
 
+const getById = async (req, res) => {
+    const search = {
+        _id: "",
+        name: "",
+        email: "",
+        image: "",
+        passport: "",
+        creditCard: "",
+    }
+    await passenger.findOne({_id: req.params.id}).select("-password")
+    .then(result => {
+
+        search._id = result._id,
+        search.name = result.name,
+        search.email = result.email,
+        search.image = result.image
+        return foreign.findOne({passengerId: result._id});
+    })
+    .then(result => {
+ 
+        search.passport = result.passport
+        search.creditCard = result.creditCard
+
+        res.json({
+            status: "successful",
+            result: search
+        })
+    })
+    .catch(err => {
+        res.json({
+            status: "error",
+            error: err,
+        });
+    })
+}
+
 const updateInfo = async (req, res) => {
     const { name, email, passport, creditCard } = req.body;
     await passenger.findOneAndUpdate({_id: req.passenger.id},{
@@ -84,4 +120,4 @@ const getAll = async (req,res) => {
     })
 }
 
-module.exports = { create, updateInfo, getAll };
+module.exports = { create, updateInfo, getAll, getById };

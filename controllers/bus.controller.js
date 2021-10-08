@@ -39,7 +39,7 @@ const getAll = async (req,res) => {
 }
 
 const getById = async (req,res) => {
-    await bus.find({_id: req.params.id})
+    await bus.findOne({_id: req.params.id})
     .then(result => {
         res.json({
             status: "successful",

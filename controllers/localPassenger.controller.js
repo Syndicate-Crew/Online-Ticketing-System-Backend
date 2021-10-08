@@ -42,15 +42,36 @@ const create = async (req,res) => {
     })
 }
 
-const getById = async (req,res) => {
-    await local.find({passengerId: req.params.id})
+const getById = async (req, res) => {
+    const search = {
+        _id: "",
+        name: "",
+        email: "",
+        image: "",
+        nic: "",
+        creditBalance: "",
+    }
+    await passenger.findOne({_id: req.params.id}).select("-password")
     .then(result => {
+
+        search._id = result._id,
+        search.name = result.name,
+        search.email = result.email,
+        search.image = result.image
+        return local.findOne({passengerId: result._id});
+    })
+    .then(result => {
+ 
+        search.nic = result.nic
+        search.creditBalance = result.creditBalance
+
         res.json({
             status: "successful",
-            result: result
+            result: search
         })
-    }).catch(err => {
-        res,json({
+    })
+    .catch(err => {
+        res.json({
             status: "error",
             error: err,
         });

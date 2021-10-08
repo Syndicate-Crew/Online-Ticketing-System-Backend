@@ -28,7 +28,7 @@ const create = async (req,res) => {
 }
 
 const getAll = async (req,res) => {
-    await driver.find()
+    await inspector.find()
     .then(result => {
         res.json({
             status: "successful",
@@ -44,11 +44,27 @@ const getAll = async (req,res) => {
 }
 
 const getById = async (req,res) => {
-    driver.findOne({_id: req.params.id })
+    const search = {
+        id: "",
+        name: "",
+        email: "",
+        nic: "",
+        inspectorId: ""
+    }
+    await employee.findOne({_id: req.params.id })
     .then(result => {
+        search.id = result._id
+        search.name = result.name
+        search.email = result.email
+        search.nic = result.nic
+
+        return inspector.findOne({employeeId: result._id })
+    })
+    .then(result => {
+        search.inspectorId = result.inspectorId
         res.json({
             status: "successful",
-            result: result
+            result: search
         })
     })
     .catch(err => {

@@ -5,7 +5,7 @@ const inspector = new mongo.Schema({
         type: String,
         require: true
     },
-    driverLicenceId: {
+    inspectorId: {
         type: String,
         require: true
     }

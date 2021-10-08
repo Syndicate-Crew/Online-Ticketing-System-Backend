@@ -2,7 +2,6 @@ const journey = require("../models/journey");
 
 const create = async (req,res) => {
     await journey.create({
-        passengerId: req.passenger.id,
         busId: req.body.busId,
         journeyCode: req.body.journeyCode,
         departure: req.body.departure,
@@ -74,7 +73,7 @@ const getByPassenger = async (req,res) => {
 }
 
 const update = async (req,res) => {
-    await journey.findOneAndUpdate({_id: req.passenger.id}, {
+    await journey.findOneAndUpdate({_id: req.params.id}, {
         journeyCode: req.body.journeyCode,
         busId: req.body.busId,
         departure: req.body.departure,
@@ -82,6 +81,9 @@ const update = async (req,res) => {
         departureTime: req.body.departureTime,
         destinationTime: req.body.destinationTime,
         date: req.body.date
+    })
+    .then(result => {
+        return journey.findOne({_id: req.params.id})
     })
     .then(result => {
         res.json({

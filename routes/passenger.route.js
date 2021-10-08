@@ -25,6 +25,8 @@ router.route("/local/AddCredit").put(auth, local.addCredit)
 
 router.route("/foreign").post(upload.single("image"),foreign.create);
 
+router.route("/foreign/:id").get(foreign.getById);
+
 router.route("/foreign").put(auth, foreign.updateInfo);
 
 // Common
